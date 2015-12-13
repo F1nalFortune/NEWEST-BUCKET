@@ -1,0 +1,19 @@
+<h1>Bucketlist Form</h1>
+
+    <%= form_for [@profile, @bucketlist] do |f| %>
+      <%= f.label :location %>
+      <%= f.text_field :location %>
+    <br />
+      <%= f.label :title %>
+      <%= f.text_field :title %> 
+    <br />
+      <%= f.label :completed %>
+      <%= f.check_box :completed %>
+    <br />
+
+      <%= f.submit %>
+    <% end %>
+
+
+
+

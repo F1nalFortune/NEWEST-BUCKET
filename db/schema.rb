@@ -26,10 +26,7 @@ ActiveRecord::Schema.define(version: 20151211221723) do
 
   create_table "profiles", force: :cascade do |t|
     t.string   "name"
-
     t.integer  "user_id"
-
-
     t.integer  "age"
     t.string   "location"
     t.datetime "created_at", null: false

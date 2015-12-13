@@ -1,14 +1,13 @@
 class BucketlistsController < ApplicationController
-  before_action :find_user, only: [:create, :show, :edit]
-  before_action :find_profile
+  before_action :find_profile, only: [:new, :create, :show, :edit]
+  before_action :find_bucketlist, only: [:create, :show, :edit, :update]
 
   def new
-    @user = User.find(params[:id])
+    # @user = current_user
     @bucketlist = Bucketlist.new
   end
 
   def create
-    @bucketlist = Bucketlist.find(params[:id])
     if @bucketlist.save
       #
       redirect_to profile_bucketlists_path(@bucketlist)
@@ -18,20 +17,18 @@ class BucketlistsController < ApplicationController
   end
 
   def show
-    @bucketlist = Bucketlist.find(params[:id])
     ##
     @profile = current_user.profile
   end
 
   def edit
-    @bucketlist = Bucketlist.find(params[:id])
     ##
     @profile = Bucketlist.profile(:id)
     @bucketlist.update(bucketlist_params)
   end
 
   def update
-    @bucketlist = Bucketlist.find(params[:id])
+    
   end
 
   def index
@@ -50,6 +47,11 @@ class BucketlistsController < ApplicationController
 
   def find_profile
     @profile = Profile.find(params[:profile_id])
+  end
+
+  def find_bucketlist
+    binding.pry
+    @bucketlist = Bucketlist.find(params[:profile_id])
   end
 
 

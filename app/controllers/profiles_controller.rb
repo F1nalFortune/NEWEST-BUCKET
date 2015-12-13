@@ -5,6 +5,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    
   end
 
   def edit

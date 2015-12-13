@@ -2,4 +2,15 @@
 <br />
 <%= link_to 'New Profile', new_profile_path %>
 <br />
-<%= link_to 'Bucket Lists', profile_bucketlists_path %>
+<%= link_to 'Bucket Lists', profile_bucketlists_path(current_user) %>
+<br />
+<%= link_to 'New Bucket List', new_profile_bucketlist_path(current_user) %>
+
+<h1>My Profile</h1>
+<ul>
+ <li><p>Name: <%= @profile.name %><br />
+  Age: <%= @profile.age %><br />
+  Location: <%= @profile.location %><br />
+    </p>
+ </li>
+</ul>
