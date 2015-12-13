@@ -1,0 +1,15 @@
+<h1>Profile Form</h1>
+
+
+    <%= form_for @profile do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    <br />
+      <%= f.label :age %>
+      <%= f.number_field :age %> 
+    <br />
+      <%= f.label :location %>
+      <%= f.text_field :location %>
+    <br />
+      <%= f.submit %>
+    <% end %>
