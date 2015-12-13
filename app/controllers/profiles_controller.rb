@@ -31,10 +31,10 @@ class ProfilesController < ApplicationController
     params.require(:profile).permit(:name, :age, :location)
   end
 
+
   def find_profile
     @profile = Profile.find(params[:id])
   end
-
 
 
 end
