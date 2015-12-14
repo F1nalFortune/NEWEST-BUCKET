@@ -8,7 +8,7 @@
       <%= f.text_field :title %> 
       <br />
       <%= f.label :completed %>
-      <%= f.select(:completed, [["completed",1],["not completed", 0]]) %>
+      <%= f.select(:completed, [["completed",true],["not completed",false]]) %>
 
       <br />
       <%= f.submit %>

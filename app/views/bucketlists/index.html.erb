@@ -1,6 +1,5 @@
 <h1>All Bucket Lists</h1>
 
-<% if @bucketlists_completed.any? %>
   <% @bucketlists.each do |bucketlist| %>
   <ul>
     <li>
@@ -12,12 +11,13 @@
     <%= bucketlist.title %>
     <br />
       completed: 
-          <% bucketlist.completed %>
+      <%= bucketlist.completed %>
+
+      <%= link_to "Delete bucket list", profile_bucketlist_path(params[:profile_id], bucketlist.id), method: :delete %>
     </li>
     </p>
   </ul>
-<% else %>
-  Please enter in a bucket list.
-<% end %>
+  <% end %>
+
 
 

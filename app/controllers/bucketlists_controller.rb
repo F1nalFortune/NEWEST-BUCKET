@@ -35,10 +35,17 @@ class BucketlistsController < ApplicationController
     @bucketlists = Bucketlist.all
   end
 
+  def destroy
+    @bucketlist = Bucketlist.find(params[:id])
+    if @bucketlist.destroy
+      redirect_to profile_bucketlists_path
+    end
+  end
+
   private
 
   def bucketlist_params
-    params.require(:bucketlist).permit(:location, :title, :profile_id)
+    params.require(:bucketlist).permit(:location, :title, :profile_id, :completed)
   end
 
   def find_user
@@ -50,7 +57,7 @@ class BucketlistsController < ApplicationController
   end
 
   def find_bucketlist
-    @bucketlist = Bucketlist.find_by profile_id: params[:profile_id]
+    @bucketlist = Bucketlist.find_by(profile_id: params[:profile_id])
   end
 
   # def completed
