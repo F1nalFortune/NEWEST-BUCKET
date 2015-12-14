@@ -1,13 +1,9 @@
 class UsersController < ApplicationController
-
   def show
-    @profile = Profile.find_by(user_id: params[:user_id])
+    @profile = Profile.find_by user_id: params[:user_id]
   end
 
   def index
-    @users = Users.all
+    @users = User.all
   end
-
-  
-
 end

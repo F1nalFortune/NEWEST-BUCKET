@@ -3,17 +3,13 @@
     <%= form_for [@profile, @bucketlist] do |f| %>
       <%= f.label :location %>
       <%= f.text_field :location %>
-    <br />
+      <br />
       <%= f.label :title %>
       <%= f.text_field :title %> 
-    <br />
+      <br />
       <%= f.label :completed %>
-      <%= f.check_box :completed %>
-    <br />
+      <%= f.select(:completed, [["completed",1],["not completed", 0]]) %>
 
+      <br />
       <%= f.submit %>
     <% end %>
-
-
-
-

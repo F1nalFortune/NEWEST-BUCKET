@@ -1,6 +1,6 @@
 class BucketlistsController < ApplicationController
   before_action :find_profile, only: [:new, :create, :show, :edit]
-  before_action :find_bucketlist, only: [:create, :show, :edit, :update]
+  before_action :find_bucketlist, only: [:show, :edit, :update]
 
   def new
     # @user = current_user
@@ -8,8 +8,8 @@ class BucketlistsController < ApplicationController
   end
 
   def create
+    @bucketlist = Bucketlist.new(bucketlist_params)
     if @bucketlist.save
-      #
       redirect_to profile_bucketlists_path(@bucketlist)
     else
       render :new
@@ -46,13 +46,21 @@ class BucketlistsController < ApplicationController
   end
 
   def find_profile
-    @profile = Profile.find(params[:profile_id])
+    @profile = Profile.find(current_user)
   end
 
   def find_bucketlist
-    binding.pry
-    @bucketlist = Bucketlist.find(params[:profile_id])
+    @bucketlist = Bucketlist.find_by profile_id: params[:profile_id]
   end
 
+  # def completed
+  #   binding.pry
+  #   {completed:1, id: params[:id]}
+  # end
+
+  # def not_completed 
+  #   binding.pry
+  #   {completed:2, id: params[:id]}
+  # end
 
 end
